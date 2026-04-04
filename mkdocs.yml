@@ -1,0 +1,169 @@
+site_name: Claude Code 源码解析红宝书
+site_description: 基于 v2.1.88 双生逆向源码的设计思想深度解析
+site_author: Warwolf Team
+site_url: https://warwolf.github.io/warwolf.book/
+
+repo_name: warwolf/warwolf.book
+repo_url: https://github.com/warwolf/warwolf.book
+
+copyright: Copyright &copy; 2026 Warwolf Team — 仅用于技术研究与教育目的
+
+theme:
+  name: material
+  language: zh
+  custom_dir: docs/overrides
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 切换到亮色模式
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 切换到暗色模式
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+    admonition:
+      tip: material/lightbulb-outline
+      question: material/help-circle-outline
+      abstract: material/telescope
+      warning: material/alert-outline
+      info: material/information-outline
+      success: material/check-circle-outline
+
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
+  - tags
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+extra_css:
+  - assets/css/custom.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/warwolf/warwolf.book
+
+nav:
+  - 首页: index.md
+  - 阅读指南: guide.md
+  - 第一编 欢迎来到源码的世界:
+    - part1/index.md
+    - 第1章 打开黑箱: part1/chapter01.md
+    - 第2章 背景知识: part1/chapter02.md
+    - 第3章 双生代码库: part1/chapter03.md
+    - 第4章 源码全景地图: part1/chapter04.md
+  - 第二编 程序是怎么启动的:
+    - part2/index.md
+    - 第5章 启动链条: part2/chapter05.md
+    - 第6章 多面手: part2/chapter06.md
+    - 第7章 状态管理: part2/chapter07.md
+    - 第8章 终端渲染: part2/chapter08.md
+  - 第三编 AI是怎么思考的:
+    - part3/index.md
+    - 第9章 提示词装配厂: part3/chapter09.md
+    - 第10章 会话引擎: part3/chapter10.md
+    - 第11章 Agent Loop: part3/chapter11.md
+    - 第12章 流式响应: part3/chapter12.md
+    - 第13章 Token经济学: part3/chapter13.md
+  - 第四编 工具系统:
+    - part4/index.md
+    - 第14章 工具统一语言: part4/chapter14.md
+    - 第15章 工具池装配: part4/chapter15.md
+    - 第16章 Bash工具: part4/chapter16.md
+    - 第17章 文件工具: part4/chapter17.md
+    - 第18章 搜索与Web: part4/chapter18.md
+    - 第19章 高级三角: part4/chapter19.md
+  - 第五编 安全防线:
+    - part5/index.md
+    - 第20章 七层防御: part5/chapter20.md
+    - 第21章 权限系统: part5/chapter21.md
+    - 第22章 25道安全关卡: part5/chapter22.md
+    - 第23章 沙箱与拦截: part5/chapter23.md
+    - 第24章 配置与认证: part5/chapter24.md
+  - 第六编 连接世界:
+    - part6/index.md
+    - 第25章 MCP协议: part6/chapter25.md
+    - 第26章 IDE桥接: part6/chapter26.md
+    - 第27章 斜杠命令: part6/chapter27.md
+    - 第28章 技能与插件: part6/chapter28.md
+  - 第七编 记忆与遗忘:
+    - part7/index.md
+    - 第29章 四层记忆: part7/chapter29.md
+    - 第30章 记忆目录: part7/chapter30.md
+    - 第31章 压缩系统: part7/chapter31.md
+    - 第32章 实验区: part7/chapter32.md
+  - 第八编 AI团队:
+    - part8/index.md
+    - 第33章 多智能体: part8/chapter33.md
+    - 第34章 团队蜂群: part8/chapter34.md
+    - 第35章 指挥官模式: part8/chapter35.md
+  - 第九编 冰山之下:
+    - part9/index.md
+    - 第36章 KAIROS: part9/chapter36.md
+    - 第37章 Feature Flag: part9/chapter37.md
+    - 第38章 彩蛋: part9/chapter38.md
+  - 第十编 站在巨人肩膀上:
+    - part10/index.md
+    - 第39章 设计模式: part10/chapter39.md
+    - 第40章 性能工程: part10/chapter40.md
+    - 第41章 恢复层真相: part10/chapter41.md
+    - 第42章 竞品与未来: part10/chapter42.md
+  - 附录:
+    - appendices/index.md
+    - 附录A 逆向方法: appendices/appendix-a.md
+    - 附录B 文件索引: appendices/appendix-b.md
+    - 附录C 工具命令速查: appendices/appendix-c.md
+    - 附录D Feature Flag: appendices/appendix-d.md
+    - 附录E 差异矩阵: appendices/appendix-e.md

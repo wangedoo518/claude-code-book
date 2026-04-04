@@ -1,0 +1,154 @@
+/* ===== Claude Code 红宝书 - 自定义样式 ===== */
+
+/* --- 中文排版优化 --- */
+:root {
+  --md-text-font: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --md-code-font: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+}
+
+.md-typeset {
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  margin-top: 2.4em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* --- Mermaid 图表优化 --- */
+.mermaid {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.md-typeset .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Admonition 自定义图标颜色 --- */
+
+/* 生活类比 - 温暖的金色 */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #f9a825;
+}
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: rgba(249, 168, 37, 0.1);
+}
+
+/* 深水区 - 深邃的蓝色 */
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract {
+  border-color: #1565c0;
+}
+.md-typeset .abstract > .admonition-title,
+.md-typeset .abstract > summary {
+  background-color: rgba(21, 101, 192, 0.1);
+}
+
+/* --- 代码块增强 --- */
+.md-typeset code {
+  font-size: 0.78rem;
+}
+
+.md-typeset pre > code {
+  font-size: 0.76rem;
+}
+
+/* --- 表格优化 --- */
+.md-typeset table:not([class]) {
+  font-size: 0.78rem;
+  display: table;
+}
+
+.md-typeset table:not([class]) th {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* --- 章节导航卡片样式 --- */
+.chapter-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 1.2em;
+  margin: 0.8em 0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.chapter-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chapter-card h3 {
+  margin-top: 0 !important;
+  color: var(--md-accent-fg-color);
+}
+
+/* --- 可信度标记颜色 --- */
+.reliability-a { color: #4caf50; font-weight: 600; }
+.reliability-b { color: #ff9800; font-weight: 600; }
+.reliability-c { color: #f44336; font-weight: 600; }
+
+/* --- 首页 Hero 区域 --- */
+.hero-section {
+  text-align: center;
+  padding: 3em 1em;
+}
+
+.hero-section h1 {
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, #7c4dff, #ff6d00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+  margin: 2em 0;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--md-accent-fg-color);
+}
+
+.hero-stat .label {
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* --- 编介绍页样式 --- */
+.part-intro {
+  border-left: 4px solid var(--md-accent-fg-color);
+  padding-left: 1.5em;
+  margin: 2em 0;
+}
+
+/* --- 打印优化 --- */
+@media print {
+  .md-sidebar, .md-header, .md-footer {
+    display: none;
+  }
+  .md-typeset {
+    font-size: 10pt;
+  }
+}
