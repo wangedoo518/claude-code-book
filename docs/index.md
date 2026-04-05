@@ -78,6 +78,10 @@ hide:
   </div>
 </section>
 
+<div class="mobile-share-strip">
+  <a href="guide/">手机端开始阅读</a>
+</div>
+
 ## 快速入口
 
 <div class="quick-entry-grid">

@@ -27,6 +27,10 @@
   line-height: 1.8;
 }
 
+.md-content__inner {
+  margin-top: 1rem;
+}
+
 .md-typeset h1 {
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -492,6 +496,10 @@
   font-style: normal;
 }
 
+.mobile-share-strip {
+  display: none;
+}
+
 @keyframes coverFloat {
   0%, 100% { transform: rotate(-8deg) translateY(0); }
   50% { transform: rotate(-6deg) translateY(-8px); }
@@ -502,26 +510,156 @@
 }
 
 @media screen and (max-width: 960px) {
+  .md-typeset {
+    font-size: 0.92rem;
+    line-height: 1.9;
+  }
+
+  .md-content__inner {
+    margin-top: 0.35rem;
+  }
+
   .cover-shell,
   .community-shell {
     grid-template-columns: 1fr;
+    gap: 1.4rem;
   }
 
   .cover-art-panel {
-    min-height: 320px;
+    min-height: 280px;
+    padding: 1.4rem;
+  }
+
+  .cover-book-icon {
+    width: min(100%, 230px);
+  }
+
+  .cover-copy h1 {
+    font-size: clamp(2.1rem, 10vw, 3.2rem);
+  }
+
+  .community-copy h2 {
+    font-size: clamp(1.65rem, 7vw, 2.4rem);
+  }
+
+  .cover-slogan {
+    padding: 1rem 1.1rem;
+    border-radius: 0 16px 16px 0;
+  }
+
+  .cover-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .cover-metrics span {
+    text-align: center;
+  }
+
+  .quick-entry-grid,
+  .idea-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .community-poster {
+    padding: 1rem;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .md-typeset {
+    font-size: 0.98rem;
+  }
+
+  .md-main__inner {
+    margin-top: 0.25rem;
+  }
+
+  .md-content {
+    padding-bottom: 5rem;
+  }
+
   .cover-page,
   .community-page {
+    margin: 0.9rem 0 1.2rem;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
     padding-left: 0.9rem;
     padding-right: 0.9rem;
+    border-radius: 22px;
+  }
+
+  .cover-art-panel {
+    min-height: 236px;
+    border-radius: 24px;
+  }
+
+  .cover-art-badge {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .cover-kicker,
+  .community-kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .cover-subtitle,
+  .community-lead,
+  .cover-reading-note {
+    font-size: 0.96rem;
+    line-height: 1.8;
+  }
+
+  .cover-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-actions {
+    gap: 0.7rem;
   }
 
   .landing-button,
   .md-typeset .landing-button {
     width: 100%;
+    min-height: 3.1rem;
+    font-size: 0.98rem;
+  }
+
+  .community-point,
+  .quick-entry-card,
+  .idea-card {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .community-poster img {
+    border-radius: 16px;
+  }
+
+  .mobile-share-strip {
+    position: sticky;
+    bottom: 0.75rem;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .mobile-share-strip a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: min(100%, 16rem);
+    padding: 0.9rem 1.2rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--warwolf-red-bright), var(--warwolf-orange));
+    color: #fff8f2;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 14px 35px rgba(90, 17, 23, 0.28);
   }
 }
 
