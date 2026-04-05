@@ -212,7 +212,7 @@ def build_epub(config: dict, pages: list[dict]) -> Path:
     book.set_language("zh-CN")
     book.add_author(config.get("site_author", "Warwolf Team"))
 
-    cover_path = ROOT / "docs" / "assets" / "images" / "warwolf-book-icon.png"
+    cover_path = ROOT / "docs" / "assets" / "images" / "claude-code-source-cover.png"
     if cover_path.exists():
         book.set_cover("cover.png", cover_path.read_bytes())
 

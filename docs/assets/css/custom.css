@@ -233,7 +233,8 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 420px;
+  gap: 1rem;
+  min-height: 520px;
   padding: 2rem;
   border: 1px solid var(--warwolf-line);
   border-radius: 36px;
@@ -245,21 +246,50 @@
 
 .cover-art-ring {
   position: absolute;
-  inset: 14%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(203, 54, 49, 0.3), rgba(255, 176, 107, 0.14) 48%, transparent 70%);
-  filter: blur(10px);
+  inset: 8%;
+  border-radius: 38px;
+  background:
+    radial-gradient(circle at top, rgba(203, 54, 49, 0.34), rgba(255, 176, 107, 0.18) 36%, transparent 70%),
+    linear-gradient(180deg, rgba(15, 213, 231, 0.08), transparent 52%);
+  filter: blur(12px);
 }
 
-.cover-book-icon {
+.cover-poster-frame {
   position: relative;
   z-index: 1;
-  width: min(100%, 320px);
-  aspect-ratio: 1 / 1;
+  width: min(100%, 360px);
+  padding: 1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02)),
+    rgba(26, 7, 10, 0.92);
+  box-shadow: 0 34px 68px rgba(0, 0, 0, 0.42);
+  transform: rotate(-4deg);
+}
+
+.cover-book-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1000 / 1483;
   object-fit: cover;
-  border-radius: 28px;
-  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.28);
-  transform: rotate(-8deg);
+  border-radius: 22px;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
+}
+
+.cover-promo-flag {
+  position: absolute;
+  left: -0.5rem;
+  top: 1.2rem;
+  z-index: 2;
+  padding: 0.7rem 1rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffd36a, #ff8a52);
+  color: #531518;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  box-shadow: 0 16px 30px rgba(255, 138, 82, 0.28);
 }
 
 .cover-art-badge {
@@ -273,6 +303,28 @@
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   background: rgba(43, 11, 14, 0.72);
+}
+
+.cover-art-caption {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.25rem;
+  width: min(100%, 360px);
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--warwolf-line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--warwolf-text);
+}
+
+.cover-art-caption strong {
+  font-size: 0.95rem;
+}
+
+.cover-art-caption span {
+  color: var(--warwolf-muted);
+  font-size: 0.82rem;
 }
 
 .cover-copy,
@@ -313,6 +365,38 @@
   color: var(--warwolf-muted);
   font-size: clamp(1.02rem, 1.2vw, 1.2rem);
   line-height: 1.9;
+}
+
+.cover-promo-strip {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1.35rem;
+  padding: 1rem 1.15rem;
+  max-width: 44rem;
+  border: 1px solid rgba(255, 176, 107, 0.26);
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(255, 176, 107, 0.16), rgba(203, 54, 49, 0.08)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.cover-promo-strip span {
+  width: fit-content;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 176, 107, 0.14);
+  color: var(--warwolf-orange-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cover-promo-strip strong {
+  color: var(--warwolf-text);
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .cover-slogan {
@@ -501,11 +585,11 @@
 }
 
 @keyframes coverFloat {
-  0%, 100% { transform: rotate(-8deg) translateY(0); }
-  50% { transform: rotate(-6deg) translateY(-8px); }
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(-2deg) translateY(-10px); }
 }
 
-.cover-book-icon {
+.cover-poster-frame {
   animation: coverFloat 6s ease-in-out infinite;
 }
 
@@ -526,12 +610,13 @@
   }
 
   .cover-art-panel {
-    min-height: 280px;
+    min-height: 320px;
     padding: 1.4rem;
   }
 
-  .cover-book-icon {
-    width: min(100%, 230px);
+  .cover-poster-frame,
+  .cover-art-caption {
+    width: min(100%, 300px);
   }
 
   .cover-copy h1 {
@@ -591,13 +676,20 @@
   }
 
   .cover-art-panel {
-    min-height: 236px;
+    min-height: 260px;
     border-radius: 24px;
   }
 
   .cover-art-badge {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .cover-promo-flag {
+    left: 0.4rem;
+    top: 0.8rem;
+    padding: 0.55rem 0.8rem;
+    letter-spacing: 0.1em;
   }
 
   .cover-kicker,
@@ -611,6 +703,15 @@
   .cover-reading-note {
     font-size: 0.96rem;
     line-height: 1.8;
+  }
+
+  .cover-promo-strip {
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+  }
+
+  .cover-promo-strip strong {
+    font-size: 0.95rem;
   }
 
   .cover-metrics {

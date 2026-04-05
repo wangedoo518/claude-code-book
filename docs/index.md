@@ -7,18 +7,29 @@ hide:
   <div class="cover-shell">
     <div class="cover-art-panel">
       <div class="cover-art-ring"></div>
-      <img
-        class="cover-book-icon"
-        src="assets/images/warwolf-book-icon.png"
-        alt="Warwolf book icon"
-      />
-      <div class="cover-art-badge">WARWOLF EDITION</div>
+      <div class="cover-poster-frame">
+        <div class="cover-promo-flag">重点宣传</div>
+        <img
+          class="cover-book-poster"
+          src="assets/images/claude-code-source-cover.png"
+          alt="Claude Code 源码解析红宝书封面海报"
+        />
+      </div>
+      <div class="cover-art-badge">2026 SOURCE CODE DROP</div>
+      <div class="cover-art-caption">
+        <strong>Claude Code 源码解析合成封面</strong>
+        <span>首页主视觉、分享图与电子书封面同步升级</span>
+      </div>
     </div>
 
     <div class="cover-copy">
       <p class="cover-kicker">WARWOLF TEAM · OPEN SOURCE READING PROJECT</p>
       <h1>Claude Code 源码解析红宝书</h1>
       <p class="cover-subtitle">基于 v2.1.88 双生逆向源码的设计思想深度解析</p>
+      <div class="cover-promo-strip">
+        <span>重点宣传</span>
+        <strong>全书封面现已切换为 Claude Code 源码解析合成海报，首页开屏直接突出“源码拆解”主题。</strong>
+      </div>
 
       <blockquote class="cover-slogan">
         开源、免费，只为培养下一代中国开源战狼
