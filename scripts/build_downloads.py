@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import mimetypes
+import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -17,6 +20,64 @@ CONFIG_PATH = ROOT / "mkdocs.yml"
 SITE_DIR = ROOT / "site"
 BUILD_DIR = ROOT / "build" / "downloads"
 DOWNLOADS_DIR = ROOT / "docs" / "assets" / "downloads"
+DOCS_DIR = ROOT / "docs"
+MERMAID_VERSION = "11.12.0"
+MERMAID_CONFIG = {
+    "theme": "neutral",
+    "securityLevel": "loose",
+    "flowchart": {"htmlLabels": True, "useMaxWidth": True},
+    "sequence": {"useMaxWidth": True},
+}
+MERMAID_FENCE_RE = re.compile(r"```mermaid\n(.*?)\n```", re.DOTALL)
+
+
+def source_md_path(md_path: str) -> Path:
+    return DOCS_DIR / md_path
+
+
+def quote_mermaid_label(text: str) -> str:
+    stripped = text.strip()
+    if stripped.startswith('"') and stripped.endswith('"'):
+        return stripped
+    return f'"{stripped.replace("\"", "\\\"")}"'
+
+
+def normalize_quadrant_block(block: str) -> str:
+    lines = block.splitlines()
+    if not lines or lines[0].strip() != "quadrantChart":
+        return block
+
+    normalized: list[str] = [lines[0]]
+    for line in lines[1:]:
+        stripped = line.lstrip()
+        indent = line[: len(line) - len(stripped)]
+
+        if stripped.startswith("x-axis "):
+            left, right = stripped[len("x-axis ") :].split("-->", 1)
+            normalized.append(f"{indent}x-axis {quote_mermaid_label(left)} --> {quote_mermaid_label(right)}")
+            continue
+
+        if stripped.startswith("y-axis "):
+            left, right = stripped[len("y-axis ") :].split("-->", 1)
+            normalized.append(f"{indent}y-axis {quote_mermaid_label(left)} --> {quote_mermaid_label(right)}")
+            continue
+
+        if stripped.startswith("quadrant-"):
+            key, value = stripped.split(None, 1)
+            normalized.append(f"{indent}{key} {quote_mermaid_label(value)}")
+            continue
+
+        normalized.append(line)
+
+    return "\n".join(normalized)
+
+
+def normalize_mermaid_source(source_text: str) -> str:
+    def replace_block(match: re.Match[str]) -> str:
+        block = match.group(1)
+        return f"```mermaid\n{normalize_quadrant_block(block)}\n```"
+
+    return MERMAID_FENCE_RE.sub(replace_block, source_text)
 
 
 def load_config() -> dict:
@@ -53,12 +114,50 @@ def clean_heading_text(tag) -> str:
     return clone.get_text(" ", strip=True).replace(" ¶", "").replace("¶", "")
 
 
-def normalize_fragment(article_html: str, html_path: Path, *, for_epub: bool = False):
-    soup = BeautifulSoup(article_html, "lxml")
+def replace_mermaid_blocks(soup: BeautifulSoup, svg_paths: list[Path]) -> None:
+    mermaid_blocks = soup.select("pre.mermaid")
+    if not mermaid_blocks:
+        return
+
+    if len(mermaid_blocks) != len(svg_paths):
+        raise RuntimeError(
+            f"Mermaid count mismatch: HTML has {len(mermaid_blocks)} blocks, "
+            f"but renderer produced {len(svg_paths)} SVGs."
+        )
+
+    for idx, (block, svg_path) in enumerate(zip(mermaid_blocks, svg_paths, strict=True), start=1):
+        svg_text = svg_path.read_text(encoding="utf-8")
+        width_match = re.search(r"max-width:\s*([0-9.]+)px", svg_text)
+        viewbox_match = re.search(r'viewBox="[^"]*?\s([0-9.]+)\s([0-9.]+)"', svg_text)
+        width_hint = None
+        if width_match:
+            width_hint = int(float(width_match.group(1)))
+        elif viewbox_match:
+            width_hint = int(float(viewbox_match.group(1)))
+
+        figure = soup.new_tag("figure", attrs={"class": "mermaid-export"})
+        img_attrs = {
+            "class": "mermaid-export__image",
+            "src": str(svg_path),
+            "alt": f"Mermaid diagram {idx}",
+            "loading": "lazy",
+        }
+        if width_hint:
+            img_attrs["width"] = str(width_hint)
+        img = soup.new_tag("img", attrs=img_attrs)
+        figure.append(img)
+        block.replace_with(figure)
+
+
+def normalize_fragment(page: dict, *, for_epub: bool = False):
+    soup = BeautifulSoup(page["article_html"], "lxml")
 
     for el in soup.select(".headerlink,.md-content__button,.mobile-share-strip"):
         el.decompose()
 
+    replace_mermaid_blocks(soup, page.get("mermaid_svgs", []))
+
+    html_path = page["html_path"]
     for tag in soup.find_all(src=True):
         src = tag.get("src", "")
         if not src or src.startswith(("http://", "https://", "data:", "file://")):
@@ -86,8 +185,11 @@ def extract_pages(nav_entries: list[tuple[str, str]]):
     pages = []
     for nav_label, md_path in nav_entries:
         html_path = md_to_html_path(md_path)
+        source_path = source_md_path(md_path)
         if not html_path.exists():
             raise FileNotFoundError(f"Missing built page: {html_path}")
+        if not source_path.exists():
+            raise FileNotFoundError(f"Missing source page: {source_path}")
         soup = BeautifulSoup(html_path.read_text(encoding="utf-8"), "lxml")
         article = soup.select_one("article.md-content__inner")
         if article is None:
@@ -98,6 +200,7 @@ def extract_pages(nav_entries: list[tuple[str, str]]):
             {
                 "nav_label": nav_label,
                 "md_path": md_path,
+                "source_path": source_path,
                 "html_path": html_path,
                 "title": title,
                 "article_html": article.decode_contents(),
@@ -129,6 +232,88 @@ def find_chrome() -> str:
     raise RuntimeError("Chrome/Chromium not found. Please install Google Chrome or Chromium.")
 
 
+def find_npx() -> str:
+    result = subprocess.run(
+        ["bash", "-lc", "command -v npx >/dev/null 2>&1 && command -v npx"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode == 0 and result.stdout.strip():
+        return result.stdout.strip()
+    raise RuntimeError("npx not found. Please install Node.js to render Mermaid diagrams for PDF/EPUB exports.")
+
+
+def render_mermaid_svgs(pages: list[dict], chrome: str) -> None:
+    npx = find_npx()
+    config_path = BUILD_DIR / "mermaid-config.json"
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    config_path.write_text(json.dumps(MERMAID_CONFIG, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    for page in pages:
+        source_text = page["source_path"].read_text(encoding="utf-8")
+        normalized_source = normalize_mermaid_source(source_text)
+        mermaid_count = len(re.findall(r"^```mermaid\s*$", source_text, re.MULTILINE))
+        if mermaid_count == 0:
+            page["mermaid_svgs"] = []
+            continue
+
+        cache_dir = BUILD_DIR / "mermaid" / Path(page["md_path"]).with_suffix("")
+        artefact_dir = cache_dir / "artifacts"
+        prepared_source = cache_dir / "source.md"
+        rendered_md = cache_dir / "rendered.md"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+
+        needs_render = True
+        if rendered_md.exists():
+            existing_svgs = sorted(artefact_dir.glob("*.svg"))
+            prepared_matches = prepared_source.exists() and prepared_source.read_text(encoding="utf-8") == normalized_source
+            if (
+                len(existing_svgs) == mermaid_count
+                and rendered_md.stat().st_mtime >= page["source_path"].stat().st_mtime
+                and prepared_matches
+            ):
+                needs_render = False
+
+        if needs_render:
+            artefact_dir.mkdir(parents=True, exist_ok=True)
+            prepared_source.write_text(normalized_source, encoding="utf-8")
+            for old_svg in artefact_dir.glob("*.svg"):
+                old_svg.unlink()
+            if rendered_md.exists():
+                rendered_md.unlink()
+            env = os.environ.copy()
+            env["PUPPETEER_SKIP_DOWNLOAD"] = "1"
+            env["PUPPETEER_EXECUTABLE_PATH"] = chrome
+            subprocess.run(
+                [
+                    npx,
+                    "-y",
+                    f"@mermaid-js/mermaid-cli@{MERMAID_VERSION}",
+                    "-i",
+                    str(prepared_source),
+                    "-o",
+                    str(rendered_md),
+                    "-e",
+                    "svg",
+                    "-a",
+                    str(artefact_dir),
+                    "-c",
+                    str(config_path),
+                    "-q",
+                ],
+                check=True,
+                env=env,
+            )
+
+        svg_paths = sorted(artefact_dir.glob("*.svg"))
+        if len(svg_paths) != mermaid_count:
+            raise RuntimeError(
+                f"Expected {mermaid_count} Mermaid SVGs for {page['md_path']}, got {len(svg_paths)}."
+            )
+        page["mermaid_svgs"] = svg_paths
+
+
 def build_combined_html(config: dict, pages: list[dict]) -> Path:
     BUILD_DIR.mkdir(parents=True, exist_ok=True)
     stylesheets = []
@@ -138,7 +323,7 @@ def build_combined_html(config: dict, pages: list[dict]) -> Path:
 
     body_sections = []
     for idx, page in enumerate(pages, start=1):
-        fragment = normalize_fragment(page["article_html"], page["html_path"])
+        fragment = normalize_fragment(page)
         section_class = "book-page book-page--cover" if page["md_path"] == "index.md" else "book-page"
         body_sections.append(
             f'<section class="{section_class}" data-page="{idx}">'
@@ -159,6 +344,8 @@ def build_combined_html(config: dict, pages: list[dict]) -> Path:
     .book-page pre { white-space: pre-wrap; word-break: break-word; }
     .book-page table { display: table !important; width: 100%; }
     .book-page img { max-width: 100%; height: auto; }
+    .book-page .mermaid-export { margin: 1.2rem 0; text-align: center; page-break-inside: avoid; }
+    .book-page .mermaid-export__image { display: inline-block; width: auto; max-width: 100%; height: auto; }
     .md-header, .md-sidebar, .md-footer, .md-tabs, .mobile-share-strip { display: none !important; }
     """
 
@@ -235,7 +422,7 @@ def build_epub(config: dict, pages: list[dict]) -> Path:
     image_items: dict[str, str] = {}
     chapters = []
     for idx, page in enumerate(pages, start=1):
-        soup = normalize_fragment(page["article_html"], page["html_path"], for_epub=True)
+        soup = normalize_fragment(page, for_epub=True)
         for img in soup.find_all("img"):
             src = img.get("src")
             if not src:
@@ -245,7 +432,7 @@ def build_epub(config: dict, pages: list[dict]) -> Path:
                 continue
             file_name = image_items.get(src)
             if file_name is None:
-                file_name = f"images/{img_path.name}"
+                file_name = f"images/{len(image_items) + 1:04d}-{img_path.name}"
                 image_items[src] = file_name
                 mime_type = mimetypes.guess_type(img_path.name)[0] or "image/png"
                 book.add_item(
@@ -284,6 +471,8 @@ def main() -> int:
     config = load_config()
     nav_entries = iter_nav_entries(config["nav"])
     pages = extract_pages(nav_entries)
+    chrome = find_chrome()
+    render_mermaid_svgs(pages, chrome)
     combined_html = build_combined_html(config, pages)
     pdf_path = build_pdf(config, combined_html)
     epub_path = build_epub(config, pages)
