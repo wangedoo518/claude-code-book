@@ -129,13 +129,13 @@ quadrantChart
     Coordinator 模式不是多开几个 Agent，而是让整场会话切换成“指挥官视角”。它适合高依赖、高复杂度任务，也因此需要更完整的状态、恢复和 UI 支撑。
 
 !!! info "关键源码索引"
-    - QueryEngine 条件导入 Coordinator：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts#L112)
-    - QueryEngine 注入 Coordinator user context：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts#L304)
-    - 判断 Coordinator 模式：[coordinatorMode.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/coordinator/coordinatorMode.ts#L36)
-    - 匹配恢复会话模式：[coordinatorMode.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/coordinator/coordinatorMode.ts#L49)
-    - Coordinator user context：[coordinatorMode.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/coordinator/coordinatorMode.ts#L80)
-    - LocalAgentTask 状态类型：[LocalAgentTask.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tasks/LocalAgentTask/LocalAgentTask.tsx#L116)
-    - LocalAgentTask 主体：[LocalAgentTask.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tasks/LocalAgentTask/LocalAgentTask.tsx#L265)
+    - QueryEngine 条件导入 Coordinator：`QueryEngine.ts`
+    - QueryEngine 注入 Coordinator user context：`QueryEngine.ts`
+    - 判断 Coordinator 模式：`coordinatorMode.ts`
+    - 匹配恢复会话模式：`coordinatorMode.ts`
+    - Coordinator user context：`coordinatorMode.ts`
+    - LocalAgentTask 状态类型：`LocalAgentTask.tsx`
+    - LocalAgentTask 主体：`LocalAgentTask.tsx`
 
 !!! warning "逆向提醒"
     Coordinator 代码在 OpenClaudeCode 中能看到完整骨架，但任务依赖图和更高层策略细节并不都显式暴露。读到这里时，要区分“运行时支撑已在”与“最终产品策略已完全公开”。

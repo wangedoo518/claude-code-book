@@ -79,7 +79,7 @@ sequenceDiagram
 
 ## 28.3 `SkillTool` 说明：技能不是纯文本，它也受权限治理
 
-[`SkillTool.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/SkillTool/SkillTool.ts#L291) 做的事情很关键：
+``SkillTool.ts`` 做的事情很关键：
 
 - 校验技能命令是否存在
 - 检查 deny / allow 规则
@@ -105,7 +105,7 @@ flowchart LR
 
 ## 28.4 插件系统关心的，是安装、启用、升级、禁用这些“生命周期”
 
-在 [`pluginOperations.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/plugins/pluginOperations.ts#L321) 里，插件不是“拖进来就完了”。它有完整的操作面：
+在 ``pluginOperations.ts`` 里，插件不是“拖进来就完了”。它有完整的操作面：
 
 - install
 - enable
@@ -193,13 +193,13 @@ flowchart TD
     技能负责把工作方法结构化，插件负责把外部能力正规化。两者最终都必须回到命令、工具和权限体系里，才能既开放又不失控。
 
 !!! info "关键源码索引"
-    - 技能 frontmatter 解析：[loadSkillsDir.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/skills/loadSkillsDir.ts#L185)
-    - 技能命令生成：[loadSkillsDir.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/skills/loadSkillsDir.ts#L267)
-    - 递归发现 `.claude/skills`：[loadSkillsDir.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/skills/loadSkillsDir.ts#L861)
-    - 动态技能启用：[loadSkillsDir.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/skills/loadSkillsDir.ts#L923)
-    - SkillTool 校验与权限：[SkillTool.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/SkillTool/SkillTool.ts#L291)
-    - 插件安装流程：[pluginOperations.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/plugins/pluginOperations.ts#L321)
-    - 插件启停与更新：[pluginOperations.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/plugins/pluginOperations.ts#L573)
+    - 技能 frontmatter 解析：`loadSkillsDir.ts`
+    - 技能命令生成：`loadSkillsDir.ts`
+    - 递归发现 `.claude/skills`：`loadSkillsDir.ts`
+    - 动态技能启用：`loadSkillsDir.ts`
+    - SkillTool 校验与权限：`SkillTool.ts`
+    - 插件安装流程：`pluginOperations.ts`
+    - 插件启停与更新：`pluginOperations.ts`
 
 !!! warning "逆向提醒"
     技能目录、插件操作和命令系统在 OpenClaudeCode 中可运行度较高，但第三方插件生态本身并不包含在仓库内。本章讨论的是 Claude Code 如何承载生态，而不是某个具体社区插件的真实质量。

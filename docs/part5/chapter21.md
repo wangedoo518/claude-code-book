@@ -210,14 +210,14 @@ pie showData
     Claude Code 的权限系统不是一套“是否弹窗”的小功能，而是一台把模式、规则、来源、状态同步到一起的判定引擎。你看到的每一个“直接执行 / 先问一句 / 直接拒绝”，背后都能追到具体源码。
 
 !!! info "关键源码索引"
-    - 模式定义：[PermissionMode.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/PermissionMode.ts#L21)
-    - 初始模式选择：[permissionSetup.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissionSetup.ts#L695)
-    - auto/bypass 门控：[permissionSetup.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissionSetup.ts#L1123)
-    - 规则读取与 managed-only 策略：[permissionsLoader.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissionsLoader.ts#L27)
-    - 规则判定入口：[permissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissions.ts#L1071)
-    - 最终权限决策：[permissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissions.ts#L1158)
-    - 规则删除与磁盘同步：[permissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissions.ts#L1329)
-    - 从磁盘同步规则：[permissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissions.ts#L1419)
+    - 模式定义：`PermissionMode.ts`
+    - 初始模式选择：`permissionSetup.ts`
+    - auto/bypass 门控：`permissionSetup.ts`
+    - 规则读取与 managed-only 策略：`permissionsLoader.ts`
+    - 规则判定入口：`permissions.ts`
+    - 最终权限决策：`permissions.ts`
+    - 规则删除与磁盘同步：`permissions.ts`
+    - 从磁盘同步规则：`permissions.ts`
 
 !!! warning "逆向提醒"
     你在界面里看到的权限弹窗，只是这一章的“表层”。真正重要的是 `toolPermissionContext` 的构造、规则来源的优先级，以及 bypass/auto 这类模式被哪些安全例外重新收紧。

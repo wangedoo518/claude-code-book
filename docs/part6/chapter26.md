@@ -45,7 +45,7 @@ flowchart LR
 
 ## 26.2 `runBridgeLoop()` 解决的是“长连接世界”的问题
 
-在 [`bridgeMain.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/bridgeMain.ts#L141) 里，`runBridgeLoop()` 会持续处理活跃会话、token、兼容 ID、心跳和断线恢复。
+在 ``bridgeMain.ts`` 里，`runBridgeLoop()` 会持续处理活跃会话、token、兼容 ID、心跳和断线恢复。
 
 它面对的是编辑器场景下典型的几类不稳定因素：
 
@@ -137,7 +137,7 @@ flowchart LR
 
 ## 26.5 JWT 和 ingress token：桥不是谁都能走的
 
-如果桥接系统只是“谁都能连进来”，那它就会变成一条安全后门。所以桥接层还要配合 [`jwtUtils.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/jwtUtils.ts#L63) 处理身份和有效期。
+如果桥接系统只是“谁都能连进来”，那它就会变成一条安全后门。所以桥接层还要配合 ``jwtUtils.ts`` 处理身份和有效期。
 
 ```mermaid
 flowchart TD
@@ -187,12 +187,12 @@ quadrantChart
     Bridge 让 Claude Code 不再只是一个终端工具，而是一套可被 IDE 托管的会话系统。入口、协议、认证、恢复、重连看起来繁琐，但正是这些细节决定了编辑器内体验是否稳定。
 
 !!! info "关键源码索引"
-    - Bridge 主循环：[bridgeMain.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/bridgeMain.ts#L141)
-    - 桥接参数解析：[bridgeMain.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/bridgeMain.ts#L1737)
-    - 远程桥核心初始化：[remoteBridgeCore.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/remoteBridgeCore.ts#L81)
-    - 桥接消息与会话处理：[remoteBridgeCore.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/remoteBridgeCore.ts#L530)
-    - 远程会话恢复末段逻辑：[remoteBridgeCore.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/remoteBridgeCore.ts#L931)
-    - JWT 工具：[jwtUtils.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/jwtUtils.ts#L63)
+    - Bridge 主循环：`bridgeMain.ts`
+    - 桥接参数解析：`bridgeMain.ts`
+    - 远程桥核心初始化：`remoteBridgeCore.ts`
+    - 桥接消息与会话处理：`remoteBridgeCore.ts`
+    - 远程会话恢复末段逻辑：`remoteBridgeCore.ts`
+    - JWT 工具：`jwtUtils.ts`
 
 !!! warning "逆向提醒"
     Bridge 代码很完整，但 IDE 插件本体不在这个仓库里。本章能讲清 Claude Code 这一端“如何被接入”，却无法完全覆盖每个编辑器宿主的 UI 细节与扩展实现。

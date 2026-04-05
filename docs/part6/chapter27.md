@@ -18,7 +18,7 @@ tags:
 
 ## 27.1 `commands.ts` 是菜单，不是厨房
 
-[`commands.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L258) 集中定义了内置命令注册表。源码里最直观的感受，就是它很“显式”：
+``commands.ts`` 集中定义了内置命令注册表。源码里最直观的感受，就是它很“显式”：
 
 - 每条命令都有名称和描述
 - 命令是否可见、是否可用可以被过滤
@@ -73,7 +73,7 @@ sequenceDiagram
 
 ## 27.3 真正有意思的是“命令注册表会继续长”
 
-在 [`commands.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L353) 之后，系统还会把：
+在 ``commands.ts`` 之后，系统还会把：
 
 - 技能目录里生成的命令
 - 插件暴露的命令
@@ -177,11 +177,11 @@ Claude Code 选择的是中间路线：
     斜杠命令是 Claude Code 的用户控制面。它把高频动作变成明确入口，又通过命令合并机制让技能、插件和 MCP 继续长进来，最终形成统一的命令空间。
 
 !!! info "关键源码索引"
-    - 内置命令注册表：[commands.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L258)
-    - 技能与插件命令合并：[commands.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L353)
-    - 可用性过滤：[commands.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L417)
-    - 统一加载入口：[commands.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L449)
-    - MCP Skill 命令拼接：[commands.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts#L547)
+    - 内置命令注册表：`commands.ts`
+    - 技能与插件命令合并：`commands.ts`
+    - 可用性过滤：`commands.ts`
+    - 统一加载入口：`commands.ts`
+    - MCP Skill 命令拼接：`commands.ts`
 
 !!! warning "逆向提醒"
     目录统计里常见“87 个命令目录”和“88 个命令”的说法，差异通常来自隐藏命令、动态命令和门控命令。读源码时要区分“目录里存在”与“运行时会出现”这两个概念。

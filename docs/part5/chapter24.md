@@ -259,19 +259,19 @@ flowchart LR
     Claude Code 的配置与认证系统回答了三个问题：规则从哪里来、谁说了算、身份怎么长期有效。把这三件事理顺之后，前面几章讲的权限、沙箱、自动模式才真正有了落点。
 
 !!! info "关键源码索引"
-    - managed file 与 drop-ins：[settings.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/settings/settings.ts#L62)
-    - 设置写回与替换策略：[settings.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/settings/settings.ts#L416)
-    - settings 合并与优先级：[settings.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/settings/settings.ts#L527)
-    - 从磁盘加载全部 settings：[settings.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/settings/settings.ts#L645)
-    - MDM 首源优先逻辑：[mdm/settings.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/settings/mdm/settings.ts#L1)
-    - 托管路径约定：[managedPath.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/settings/managedPath.ts#L8)
-    - GrowthBook 客户端与缓存：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L1)
-    - OAuthService 与 PKCE：[oauth/index.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/oauth/index.ts#L14)
-    - 授权 URL 与 token 交换：[oauth/client.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/oauth/client.ts#L46)
-    - macOS keychain 预取：[keychainPrefetch.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/secureStorage/keychainPrefetch.ts#L1)
-    - OAuth token 保存与 401 刷新：[auth.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/auth.ts#L1193)
-    - Bridge JWT 刷新调度：[jwtUtils.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/jwtUtils.ts#L63)
-    - 远程凭据与 401 恢复：[remoteBridgeCore.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/remoteBridgeCore.ts#L140)
+    - managed file 与 drop-ins：`settings.ts`
+    - 设置写回与替换策略：`settings.ts`
+    - settings 合并与优先级：`settings.ts`
+    - 从磁盘加载全部 settings：`settings.ts`
+    - MDM 首源优先逻辑：`mdm/settings.ts`
+    - 托管路径约定：`managedPath.ts`
+    - GrowthBook 客户端与缓存：`growthbook.ts`
+    - OAuthService 与 PKCE：`oauth/index.ts`
+    - 授权 URL 与 token 交换：`oauth/client.ts`
+    - macOS keychain 预取：`keychainPrefetch.ts`
+    - OAuth token 保存与 401 刷新：`auth.ts`
+    - Bridge JWT 刷新调度：`jwtUtils.ts`
+    - 远程凭据与 401 恢复：`remoteBridgeCore.ts`
 
 !!! warning "逆向提醒"
     这一章覆盖了很多“跨目录协作”的基础设施。它们单个文件看起来像杂项，但组合起来才构成完整治理体系。阅读时不要只盯着某一个 `settings.ts` 或 `auth.ts`，要沿着调用链一起看。

@@ -38,7 +38,7 @@ flowchart TD
 
 ## 37.2 运行时 gate：GrowthBook 让“同一份代码”服务不同用户
 
-[`growthbook.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L227) 展示的则是另一层：运行时特性读取。
+``growthbook.ts`` 展示的则是另一层：运行时特性读取。
 
 它支持：
 
@@ -146,12 +146,12 @@ quadrantChart
     Feature Flag 是 Claude Code 的演化基础设施。编译时 gate 决定代码有没有，运行时 gate 决定谁能用到它们，两者合起来才让试验和发布变得可控。
 
 !!! info "关键源码索引"
-    - `tools.ts` 中的多处 gate：[tools.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools.ts#L24)
-    - `cli.tsx` 的 fast path 与条件分流：[cli.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/entrypoints/cli.tsx#L30)
-    - 全部 GrowthBook features 读取：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L227)
-    - GrowthBook 初始化：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L622)
-    - `CACHED_MAY_BE_STALE` 读取：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L734)
-    - `CACHED_WITH_REFRESH` 读取：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L783)
+    - `tools.ts` 中的多处 gate：`tools.ts`
+    - `cli.tsx` 的 fast path 与条件分流：`cli.tsx`
+    - 全部 GrowthBook features 读取：`growthbook.ts`
+    - GrowthBook 初始化：`growthbook.ts`
+    - `CACHED_MAY_BE_STALE` 读取：`growthbook.ts`
+    - `CACHED_WITH_REFRESH` 读取：`growthbook.ts`
 
 !!! warning "逆向提醒"
     “89 个开关”是研究过程中得到的能力版图印象，但具体数字会随版本和还原范围变化。比数字更重要的是读懂 gate 的结构和它们暗示的产品方向。

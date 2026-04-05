@@ -190,15 +190,15 @@ Claude Code 之所以复杂，是因为它同时追求：
     `CLAUDE.md` 负责稳定规则，memdir 负责结构化长期记忆，typed memory 负责分类与召回，autoDream 负责自动整理。它们分工明确，合起来才像真正可持续的记忆系统。
 
 !!! info "关键源码索引"
-    - `CLAUDE.md` 额外目录状态：[bootstrap/state.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bootstrap/state.ts#L206)
-    - 设置额外 `CLAUDE.md` 目录：[bootstrap/state.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bootstrap/state.ts#L1670)
-    - 命令行 `--add-dir` 说明：[main.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/main.tsx#L982)
-    - typed memory 类型定义：[memoryTypes.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/memoryTypes.ts#L14)
-    - typed-memory prompt 构建：[memdir.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/memdir.ts#L269)
-    - memory scan：[memoryScan.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/memoryScan.ts#L35)
-    - relevant memory 查找：[findRelevantMemories.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/findRelevantMemories.ts#L39)
-    - autoDream 开关：[config.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/autoDream/config.ts#L13)
-    - autoDream 主流程：[autoDream.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/autoDream/autoDream.ts#L122)
+    - `CLAUDE.md` 额外目录状态：`bootstrap/state.ts`
+    - 设置额外 `CLAUDE.md` 目录：`bootstrap/state.ts`
+    - 命令行 `--add-dir` 说明：`main.tsx`
+    - typed memory 类型定义：`memoryTypes.ts`
+    - typed-memory prompt 构建：`memdir.ts`
+    - memory scan：`memoryScan.ts`
+    - relevant memory 查找：`findRelevantMemories.ts`
+    - autoDream 开关：`config.ts`
+    - autoDream 主流程：`autoDream.ts`
 
 !!! warning "逆向提醒"
     `CLAUDE.md` 的加载、memory prompt 的构建、autoDream 的触发条件都能在源码里看到，但“哪些记忆最终最有用”仍然高度依赖真实使用场景。本章分析的是系统结构，不是某个团队应当如何写记忆的唯一答案。

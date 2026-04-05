@@ -141,12 +141,12 @@ OpenClaudeCode 的价值非常大，因为它让我们：
     `claude-code-sourcemap` 和 `OpenClaudeCode` 必须双线阅读：前者更像原貌证据，后者更像运行补全。`shims/` 与 `vendor/` 的存在不是问题，问题是把它们误当作官方原始设计。
 
 !!! info "关键源码索引"
-    - OpenClaudeCode restored 标记：[package.json](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/package.json#L3)
-    - 本地 shim 依赖入口：[package.json](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/package.json#L25)
-    - `vendor/` 与 `shims/` 编译边界：[tsconfig.json](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/tsconfig.json#L26)
-    - 仓库说明中的 compatibility 提示：[AGENTS.md](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/AGENTS.md#L4)
-    - shim 目录示例：[shims/](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/shims)
-    - vendor 目录示例：[vendor/](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/vendor)
+    - OpenClaudeCode restored 标记：`package.json`
+    - 本地 shim 依赖入口：`package.json`
+    - `vendor/` 与 `shims/` 编译边界：`tsconfig.json`
+    - 仓库说明中的 compatibility 提示：`AGENTS.md`
+    - shim 目录示例：`shims/`
+    - vendor 目录示例：`vendor/`
 
 !!! warning "逆向提醒"
     这一章本身就是全书最大的“逆向提醒”。如果你引用的是 `shims/` 或只存在于 OpenClaudeCode 的兼容代码，必须明确标注它的证据等级，不能伪装成官方实现细节。

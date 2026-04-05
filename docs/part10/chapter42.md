@@ -126,12 +126,12 @@ quadrantChart
     Claude Code 代表的是一种 CLI-first、平台型、强治理、强记忆、强协作的 Agent 路线。它未来最可能继续向主动化、多模态、后台化和平台化推进，而真正决定上限的，将是信任与治理能力。
 
 !!! info "关键源码索引"
-    - 工具平台基准：[tools.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools.ts)
-    - 记忆系统基准：[memdir/](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir)
-    - 多智能体基准：[AgentTool/](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/AgentTool)
-    - Coordinator 方向：[coordinatorMode.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/coordinator/coordinatorMode.ts)
-    - Feature Flag 方向图：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts)
-    - KAIROS 与主动能力入口：[tools.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools.ts#L24)
+    - 工具平台基准：`tools.ts`
+    - 记忆系统基准：`memdir/`
+    - 多智能体基准：`AgentTool/`
+    - Coordinator 方向：`coordinatorMode.ts`
+    - Feature Flag 方向图：`growthbook.ts`
+    - KAIROS 与主动能力入口：`tools.ts`
 
 !!! warning "逆向提醒"
     这一章谈的是架构路线与趋势，不是最新市场情报。所有判断都基于本书分析到的源码与设计线索，而不是对外部产品的实时功能比拼。

@@ -233,14 +233,14 @@ flowchart TD
     BashTool 的安全不是一条黑名单，而是一串按顺序运行的关卡：只读识别、路径校验、危险 sed、shell 语法安全、规则匹配、模式判断、沙箱配合。正因为它最强，所以它的安检也最重。
 
 !!! info "关键源码索引"
-    - 只读约束主入口：[readOnlyValidation.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/readOnlyValidation.ts#L1867)
-    - `xargs` 安全目标白名单：[readOnlyValidation.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/readOnlyValidation.ts#L1232)
-    - 危险移除路径检查：[pathValidation.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/pathValidation.ts#L66)
-    - 危险路径插入顺序：[pathValidation.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/pathValidation.ts#L723)
-    - `sed` 约束入口：[sedValidation.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/sedValidation.ts#L634)
-    - Zsh 危险命令检查：[bashSecurity.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/bashSecurity.ts#L2178)
-    - Bash 权限后半段顺序：[bashPermissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/bashPermissions.ts#L1112)
-    - Bash 权限前半段入口：[bashPermissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/bashPermissions.ts#L1829)
+    - 只读约束主入口：`readOnlyValidation.ts`
+    - `xargs` 安全目标白名单：`readOnlyValidation.ts`
+    - 危险移除路径检查：`pathValidation.ts`
+    - 危险路径插入顺序：`pathValidation.ts`
+    - `sed` 约束入口：`sedValidation.ts`
+    - Zsh 危险命令检查：`bashSecurity.ts`
+    - Bash 权限后半段顺序：`bashPermissions.ts`
+    - Bash 权限前半段入口：`bashPermissions.ts`
 
 !!! warning "逆向提醒"
     “25 道安全关卡”是对 BashTool 安全检查簇的概括，不是源码里排成 1 到 25 的官方清单。真正实现横跨 `bashPermissions.ts`、`readOnlyValidation.ts`、`pathValidation.ts`、`sedValidation.ts`、`bashSecurity.ts` 多个文件。

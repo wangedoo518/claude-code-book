@@ -219,14 +219,14 @@ flowchart LR
     Claude Code 的第二道墙不是某一个文件，而是一种组合：Hook 负责应用层拦截，Sandbox 负责系统层隔离。两者共同确保“判断失误”不容易升级成“环境失控”。
 
 !!! info "关键源码索引"
-    - PreToolUse / PostToolUse 总线：[toolHooks.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/tools/toolHooks.ts#L39)
-    - Hook 与规则合流：[toolHooks.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/tools/toolHooks.ts#L321)
-    - PreToolUse 结果处理：[toolHooks.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/tools/toolHooks.ts#L435)
-    - 内部 post-sampling hooks：[postSamplingHooks.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/hooks/postSamplingHooks.ts#L20)
-    - 沙箱适配层入口：[sandbox-adapter.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/sandbox/sandbox-adapter.ts#L1)
-    - 路径规则翻译：[sandbox-adapter.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/sandbox/sandbox-adapter.ts#L83)
-    - 托管域名/路径限制：[sandbox-adapter.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/sandbox/sandbox-adapter.ts#L149)
-    - 沙箱配置转换：[sandbox-adapter.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/sandbox/sandbox-adapter.ts#L172)
+    - PreToolUse / PostToolUse 总线：`toolHooks.ts`
+    - Hook 与规则合流：`toolHooks.ts`
+    - PreToolUse 结果处理：`toolHooks.ts`
+    - 内部 post-sampling hooks：`postSamplingHooks.ts`
+    - 沙箱适配层入口：`sandbox-adapter.ts`
+    - 路径规则翻译：`sandbox-adapter.ts`
+    - 托管域名/路径限制：`sandbox-adapter.ts`
+    - 沙箱配置转换：`sandbox-adapter.ts`
 
 !!! warning "逆向提醒"
     OpenClaudeCode 这里调用的是外部包 `@anthropic-ai/sandbox-runtime`。我们能清楚看到 Claude Code 如何构造和使用沙箱配置，但更底层的运行时细节在这个仓库之外。

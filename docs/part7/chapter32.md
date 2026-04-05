@@ -165,12 +165,12 @@ flowchart LR
     `feature()`、主链接入程度、治理配套程度，是判断一段代码成熟度的三把尺子。实验功能不是杂质，而是产品未来方向最直接的证据。
 
 !!! info "关键源码索引"
-    - QueryEngine 条件导入 snip / coordinator：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts#L110)
-    - QueryEngine 条件导入 memory/snip：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts#L120)
-    - Query 主循环中的 snip / collapse：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts#L403)
-    - 工具池中的 feature gate 痕迹：[tools.ts](/Users/champion/Documents/develop/Warwolf/claude-code-sourcemap/restored-src/src/tools.ts#L26)
-    - GrowthBook 功能读取：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L734)
-    - cached + refresh 路径：[growthbook.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/analytics/growthbook.ts#L783)
+    - QueryEngine 条件导入 snip / coordinator：`QueryEngine.ts`
+    - QueryEngine 条件导入 memory/snip：`QueryEngine.ts`
+    - Query 主循环中的 snip / collapse：`query.ts`
+    - 工具池中的 feature gate 痕迹：`tools.ts`
+    - GrowthBook 功能读取：`growthbook.ts`
+    - cached + refresh 路径：`growthbook.ts`
 
 !!! warning "逆向提醒"
     实验功能是最容易被误读的区域。因为你同时会在还原层、OpenClaudeCode 补全层、feature gate、GrowthBook、隐藏入口里看到它的碎片。结论一定要基于多处证据交叉，而不是只看一个目录或一个函数名。

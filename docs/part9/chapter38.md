@@ -113,14 +113,14 @@ mindmap
     彩蛋不是边角料。Buddy 透露 UI 野心，Voice 透露输入演化，Computer Use 透露能力边界正在扩张，Brief/Monitor 则透露系统正走向更持续的后台代理。
 
 !!! info "关键源码索引"
-    - Buddy 组件：[CompanionSprite.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/buddy/CompanionSprite.tsx#L1)
-    - Buddy 目录：[buddy/](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/buddy)
-    - Voice 流式 STT：[voiceStreamSTT.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/voiceStreamSTT.ts#L1)
-    - Voice 模式设置痕迹：[supportedSettings.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/ConfigTool/supportedSettings.ts#L144)
-    - Computer Use shim：[index.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/shims/ant-computer-use-mcp/index.ts#L1)
-    - Computer Use 输入 shim：[index.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/shims/ant-computer-use-input/index.ts#L1)
-    - REPL 中 Buddy / Voice 痕迹：[REPL.tsx](/Users/champion/Documents/develop/Warwolf/claude-code-sourcemap/restored-src/src/screens/REPL.tsx#L4022)
-    - `BUDDY` 在 REPL 中的分支：[REPL.tsx](/Users/champion/Documents/develop/Warwolf/claude-code-sourcemap/restored-src/src/screens/REPL.tsx#L4565)
+    - Buddy 组件：`CompanionSprite.tsx`
+    - Buddy 目录：`buddy/`
+    - Voice 流式 STT：`voiceStreamSTT.ts`
+    - Voice 模式设置痕迹：`supportedSettings.ts`
+    - Computer Use shim：`index.ts`
+    - Computer Use 输入 shim：`index.ts`
+    - REPL 中 Buddy / Voice 痕迹：`REPL.tsx`
+    - `BUDDY` 在 REPL 中的分支：`REPL.tsx`
 
 !!! warning "逆向提醒"
     这一章覆盖的很多能力都带强烈门控或 shim 色彩。它们是“方向证据”非常有价值，但不能简单等同于“今天默认可用的稳定功能清单”。

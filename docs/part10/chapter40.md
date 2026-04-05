@@ -140,14 +140,14 @@ flowchart LR
     Claude Code 能快，不是因为它“小”，而是因为它在每一层都避免了不必要的等待：薄入口、快路径、后台预取、多层缓存和构建裁剪缺一不可。
 
 !!! info "关键源码索引"
-    - 最薄入口：[bootstrap-entry.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bootstrap-entry.ts#L1)
-    - `cli.tsx` fast path 说明：[cli.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/entrypoints/cli.tsx#L30)
-    - `--version` fast path：[cli.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/entrypoints/cli.tsx#L36)
-    - bridge / daemon / worktree 分流：[cli.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/entrypoints/cli.tsx#L113)
-    - `main.tsx` 顶层预取注释：[main.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/main.tsx#L1)
-    - deferred prefetches：[main.tsx](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/main.tsx#L383)
-    - `package.json` restored 标记：[package.json](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/package.json#L3)
-    - `moduleResolution: bundler`：[tsconfig.json](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/tsconfig.json#L5)
+    - 最薄入口：`bootstrap-entry.ts`
+    - `cli.tsx` fast path 说明：`cli.tsx`
+    - `--version` fast path：`cli.tsx`
+    - bridge / daemon / worktree 分流：`cli.tsx`
+    - `main.tsx` 顶层预取注释：`main.tsx`
+    - deferred prefetches：`main.tsx`
+    - `package.json` restored 标记：`package.json`
+    - `moduleResolution: bundler`：`tsconfig.json`
 
 !!! warning "逆向提醒"
     我们能明确看到大量性能策略和构建边界，但打包脚本与发布流水线的全部细节并不都在仓库里。因此，本章可以高度可信地分析“代码如何优化启动”，但无法完整还原 Anthropic 内部 CI/CD 全貌。

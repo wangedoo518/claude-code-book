@@ -25,7 +25,7 @@ MCP 在源码里被拆成几类核心对象：
 - Tools / Resources / Prompts / Commands 四类能力
 - Client 侧发现、缓存、调用和错误恢复
 
-在 [`types.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/mcp/types.ts#L10) 里，Claude Code 先把这些概念用类型固定下来，再在 `client.ts` 里把它们串成真正的运行流程。
+在 ``types.ts`` 里，Claude Code 先把这些概念用类型固定下来，再在 `client.ts` 里把它们串成真正的运行流程。
 
 ```mermaid
 classDiagram
@@ -100,7 +100,7 @@ flowchart LR
 
 MCP 的难点不是“发个 JSON-RPC 请求”，而是：系统如何知道现在有哪些服务连着、每个服务暴露了什么、是否可用、哪些要变成工具、哪些要变成命令。
 
-[`client.ts`](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/mcp/client.ts#L2226) 里的 `getMcpToolsCommandsAndResources()` 就在做这件事。它会：
+``client.ts`` 里的 `getMcpToolsCommandsAndResources()` 就在做这件事。它会：
 
 1. 区分 active 和 disabled servers
 2. 按本地 / 远程特征分组
@@ -185,11 +185,11 @@ flowchart LR
     MCP 让 Claude Code 从“自带一组工具的产品”升级成“可接入外部能力的平台”。它的重点不是炫技，而是把多种传输和多类能力统一进既有的工具与命令体系。
 
 !!! info "关键源码索引"
-    - MCP 类型与传输枚举：[types.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/mcp/types.ts#L10)
-    - Server 配置与作用域定义：[types.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/mcp/types.ts#L58)
-    - 发现并合并工具/命令/资源：[client.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/mcp/client.ts#L2226)
-    - 资源工具自动补齐：[client.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/mcp/client.ts#L2418)
-    - MCPTool 统一包装层：[MCPTool.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/MCPTool/MCPTool.ts#L13)
+    - MCP 类型与传输枚举：`types.ts`
+    - Server 配置与作用域定义：`types.ts`
+    - 发现并合并工具/命令/资源：`client.ts`
+    - 资源工具自动补齐：`client.ts`
+    - MCPTool 统一包装层：`MCPTool.ts`
 
 !!! warning "逆向提醒"
     MCP 相关类型和客户端代码在还原层里相对完整，但具体 server 端行为不在本仓库中。本章分析的是 Claude Code 作为 MCP Client 的实现，而不是所有外部 MCP Server 的真实能力边界。

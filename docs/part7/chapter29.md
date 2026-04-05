@@ -168,13 +168,13 @@ flowchart TD
     Claude Code 的记忆不是一个大缓存，而是四层协作系统：会话层负责当前任务，项目层负责规则，个人层负责长期经验，团队层负责共享共识。
 
 !!! info "关键源码索引"
-    - QueryEngine 注入 memory prompt：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts#L33)
-    - QueryEngine 读取 memory prompt：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts#L318)
-    - Auto memory 开关与路径：[paths.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/paths.ts#L30)
-    - auto memory 目录解析：[paths.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/paths.ts#L223)
-    - 统一 memory prompt 构建：[memdir.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/memdir.ts#L419)
-    - team memory 路径与边界：[teamMemPaths.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/memdir/teamMemPaths.ts#L73)
-    - team memory 同步服务：[index.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/teamMemorySync/index.ts#L760)
+    - QueryEngine 注入 memory prompt：`QueryEngine.ts`
+    - QueryEngine 读取 memory prompt：`QueryEngine.ts`
+    - Auto memory 开关与路径：`paths.ts`
+    - auto memory 目录解析：`paths.ts`
+    - 统一 memory prompt 构建：`memdir.ts`
+    - team memory 路径与边界：`teamMemPaths.ts`
+    - team memory 同步服务：`index.ts`
 
 !!! warning "逆向提醒"
     记忆系统的文件化部分在仓库里很清晰，但“哪些记忆最终会被模型采纳”仍然取决于提示装配和模型行为。本章分析的是系统如何提供记忆，不是模型是否一定会完美使用这些记忆。

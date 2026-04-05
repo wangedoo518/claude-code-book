@@ -211,15 +211,15 @@ quadrantChart
     Claude Code 的安全性不是来自“模型不会犯错”，而是来自一条多层、独立、互相补位的防线。你后面读权限系统、BashTool、沙箱、认证时，都可以把它们放回这七层框架里理解。
 
 !!! info "关键源码索引"
-    - `PermissionMode` 模式定义：[PermissionMode.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/PermissionMode.ts#L21)
-    - 规则判定主流程：[permissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissions.ts#L1071)
-    - 最终权限决策：[permissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissions.ts#L1158)
-    - 自动模式危险权限剥离：[permissionSetup.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissionSetup.ts#L84)
-    - 危险权限扫描：[permissionSetup.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/permissionSetup.ts#L295)
-    - Bash 二次检查顺序：[bashPermissions.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools/BashTool/bashPermissions.ts#L1112)
-    - Hook 权限合流：[toolHooks.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/tools/toolHooks.ts#L321)
-    - 拒绝追踪回退：[denialTracking.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/permissions/denialTracking.ts#L8)
-    - 沙箱配置翻译：[sandbox-adapter.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/utils/sandbox/sandbox-adapter.ts#L172)
+    - `PermissionMode` 模式定义：`PermissionMode.ts`
+    - 规则判定主流程：`permissions.ts`
+    - 最终权限决策：`permissions.ts`
+    - 自动模式危险权限剥离：`permissionSetup.ts`
+    - 危险权限扫描：`permissionSetup.ts`
+    - Bash 二次检查顺序：`bashPermissions.ts`
+    - Hook 权限合流：`toolHooks.ts`
+    - 拒绝追踪回退：`denialTracking.ts`
+    - 沙箱配置翻译：`sandbox-adapter.ts`
 
 !!! warning "逆向提醒"
     “七层防御”是本书根据多处源码整理出的分析框架，不是源码里某个现成常量名。真实实现是分散的：有的在权限引擎里，有的在工具内部，有的在沙箱和认证层。

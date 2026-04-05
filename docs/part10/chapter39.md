@@ -133,12 +133,12 @@ mindmap
     如果只带走一句话，那就是：Claude Code 的优秀并不神秘，它把传统软件工程里的好模式，用一种非常现代的方式重新组合进了 Agent 产品。
 
 !!! info "关键源码索引"
-    - 工具协议：[Tool.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/Tool.ts)
-    - 工具池装配：[tools.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/tools.ts)
-    - Agent 主循环：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts)
-    - 会话引擎：[QueryEngine.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/QueryEngine.ts)
-    - 命令系统：[commands.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/commands.ts)
-    - Bridge 分层：[bridgeMain.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/bridge/bridgeMain.ts)
+    - 工具协议：`Tool.ts`
+    - 工具池装配：`tools.ts`
+    - Agent 主循环：`query.ts`
+    - 会话引擎：`QueryEngine.ts`
+    - 命令系统：`commands.ts`
+    - Bridge 分层：`bridgeMain.ts`
 
 !!! warning "逆向提醒"
     设计模式是本书的分析视角，不是官方术语。它们的价值在于帮助你迁移工程思想，而不是要求你逐字对应每个 GoF 名称。

@@ -166,17 +166,17 @@ flowchart TD
     Claude Code 的压缩系统不是单点功能，而是一套多层策略：microcompact 和 snip 负责精细减重，auto compact 负责提前管理，context collapse 和 reactive compact 负责应急救火。
 
 !!! info "关键源码索引"
-    - `query.ts` 引入 compact 体系：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts#L12)
-    - Snip 预处理：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts#L403)
-    - context collapse 应用：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts#L440)
-    - overflow 恢复：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts#L1091)
-    - reactive compact 重试：[query.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/query.ts#L1120)
-    - auto compact 阈值与入口：[autoCompact.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/compact/autoCompact.ts#L103)
-    - autoCompactIfNeeded：[autoCompact.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/compact/autoCompact.ts#L241)
-    - buildPostCompactMessages：[compact.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/compact/compact.ts#L330)
-    - microcompact 主入口：[microCompact.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/compact/microCompact.ts#L253)
-    - snipCompactIfNeeded：[snipCompact.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/compact/snipCompact.ts#L1)
-    - recoverFromOverflow：[index.ts](/Users/champion/Documents/develop/Warwolf/OpenClaudeCode/src/services/contextCollapse/index.ts#L49)
+    - `query.ts` 引入 compact 体系：`query.ts`
+    - Snip 预处理：`query.ts`
+    - context collapse 应用：`query.ts`
+    - overflow 恢复：`query.ts`
+    - reactive compact 重试：`query.ts`
+    - auto compact 阈值与入口：`autoCompact.ts`
+    - autoCompactIfNeeded：`autoCompact.ts`
+    - buildPostCompactMessages：`compact.ts`
+    - microcompact 主入口：`microCompact.ts`
+    - snipCompactIfNeeded：`snipCompact.ts`
+    - recoverFromOverflow：`index.ts`
 
 !!! warning "逆向提醒"
     压缩效果和模型行为强相关。源码能解释“什么时候压、怎么压、压后消息如何重建”，但不能保证任何一次压缩都保留了最优语义，这依然是运行时策略和模型质量共同决定的结果。
