@@ -1,6 +1,7 @@
 .claude/
 .DS_Store
 site/
+build/
 __pycache__/
 .venv/
 微信群.jpg
