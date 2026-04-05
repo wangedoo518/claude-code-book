@@ -12,16 +12,18 @@ theme:
   name: material
   language: zh
   custom_dir: docs/overrides
+  logo: assets/images/warwolf-book-icon.png
+  favicon: assets/images/warwolf-book-icon.png
   palette:
     - scheme: slate
-      primary: deep purple
+      primary: red
       accent: amber
       toggle:
         icon: material/brightness-4
         name: 切换到亮色模式
     - scheme: default
-      primary: deep purple
-      accent: amber
+      primary: red
+      accent: deep orange
       toggle:
         icon: material/brightness-7
         name: 切换到暗色模式
@@ -96,7 +98,7 @@ extra:
       link: https://github.com/wangedoo518/claude-code-book
 
 nav:
-  - 首页: index.md
+  - 封面: index.md
   - 阅读指南: guide.md
   - 第一编 欢迎来到源码的世界:
     - part1/index.md

@@ -4,142 +4,117 @@ hide:
   - toc
 ---
 
-<div class="hero-section" markdown>
+<section class="cover-page">
+  <div class="cover-shell">
+    <div class="cover-art-panel">
+      <div class="cover-art-ring"></div>
+      <img
+        class="cover-book-icon"
+        src="assets/images/warwolf-book-icon.png"
+        alt="Warwolf book icon"
+      />
+      <div class="cover-art-badge">WARWOLF EDITION</div>
+    </div>
 
-# Claude Code 源码解析红宝书
+    <div class="cover-copy">
+      <p class="cover-kicker">WARWOLF TEAM · OPEN SOURCE READING PROJECT</p>
+      <h1>Claude Code 源码解析红宝书</h1>
+      <p class="cover-subtitle">基于 v2.1.88 双生逆向源码的设计思想深度解析</p>
 
-**基于 v2.1.88 双生逆向源码的设计思想深度解析**
+      <blockquote class="cover-slogan">
+        开源、免费，只为培养下一代中国开源战狼
+        <span>--- 来自 中国开源战狼团队</span>
+      </blockquote>
 
-*从高中生到架构师，一本书，三种读法，同一条路径*
+      <div class="cover-metrics">
+        <span>42 章正文</span>
+        <span>5 个附录</span>
+        <span>54 个工具</span>
+        <span>88 个命令</span>
+        <span>89 个 Feature Flag</span>
+      </div>
 
-<div class="hero-stats">
-<div class="hero-stat">
-<div class="number">1,884</div>
-<div class="label">TypeScript 文件</div>
+      <div class="cover-actions">
+        <a class="landing-button landing-button--primary" href="guide/">开始阅读</a>
+        <a class="landing-button" href="https://github.com/wangedoo518/claude-code-book/releases/latest" target="_blank" rel="noopener">下载 PDF</a>
+        <a class="landing-button" href="https://github.com/wangedoo518/claude-code-book/releases/latest" target="_blank" rel="noopener">下载 EPUB</a>
+        <a class="landing-button" href="https://github.com/wangedoo518/claude-code-book" target="_blank" rel="noopener">源码</a>
+      </div>
+
+      <p class="cover-note">PDF / EPUB 将在 GitHub Releases 页面持续更新，源码入口直达仓库主页。</p>
+    </div>
+  </div>
+</section>
+
+<section class="community-page">
+  <div class="community-shell">
+    <div class="community-copy">
+      <p class="community-kicker">第二页 / 一起聊下一代技术</p>
+      <h2>一群热爱技术的小伙伴一起探讨下一个时代最新技术进展</h2>
+      <p class="community-lead">
+        从 Claude Code、AI Agent、MCP 与插件生态，到源码逆向、自动化工作流和工程实践，我们把“看懂”变成“能一起做出来”。
+      </p>
+
+      <div class="community-points">
+        <div class="community-point">
+          <strong>讨论方向</strong>
+          <span>源码拆解、AI 工程化、开源协作、下一代工具链</span>
+        </div>
+        <div class="community-point">
+          <strong>交流方式</strong>
+          <span>问题互答、资料共享、项目实战、路线讨论</span>
+        </div>
+        <div class="community-point">
+          <strong>适合谁</strong>
+          <span>想认真理解 AI 编程助手的人，和愿意一起做开源的人</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="community-poster">
+      <img src="assets/images/community-group.jpg" alt="Claude Code 源码交流群二维码" />
+      <p>扫码加入交流群。若二维码过期，我们会在仓库中更新最新版本。</p>
+    </div>
+  </div>
+</section>
+
+## 快速入口
+
+<div class="quick-entry-grid">
+  <a class="quick-entry-card" href="part1/">
+    <span>01</span>
+    <strong>欢迎来到源码的世界</strong>
+    <em>先建立地图，再进入正文章节</em>
+  </a>
+  <a class="quick-entry-card" href="guide/">
+    <span>GUIDE</span>
+    <strong>三种读法与推荐路径</strong>
+    <em>按你的背景选择最顺手的阅读路线</em>
+  </a>
+  <a class="quick-entry-card" href="appendices/">
+    <span>APPX</span>
+    <strong>附录与速查资料</strong>
+    <em>工具、命令、Feature Flag 和证据分级</em>
+  </a>
 </div>
-<div class="hero-stat">
-<div class="number">512,664</div>
-<div class="label">行源代码</div>
-</div>
-<div class="hero-stat">
-<div class="number">54</div>
-<div class="label">内置工具</div>
-</div>
-<div class="hero-stat">
-<div class="number">88</div>
-<div class="label">斜杠命令</div>
-</div>
-<div class="hero-stat">
-<div class="number">89</div>
-<div class="label">Feature Flag</div>
-</div>
-</div>
-
-[开始阅读 :material-arrow-right:](guide.md){ .md-button .md-button--primary }
-[第一编：欢迎来到源码的世界 :material-book-open-variant:](part1/index.md){ .md-button }
-
-</div>
-
----
-
-## 这本书讲什么
-
-```mermaid
-mindmap
-  root((Claude Code<br/>源码解析))
-    欢迎篇
-      打开黑箱
-      双生代码库
-      全景地图
-    启动篇
-      启动链条
-      多模式
-      状态管理
-      终端渲染
-    引擎篇
-      提示词装配
-      Agent Loop
-      流式响应
-      Token经济
-    工具篇
-      54个工具
-      Bash安全
-      文件读写改
-      Agent+Skill+MCP
-    安全篇
-      七层防御
-      25道关卡
-      沙箱隔离
-    扩展篇
-      MCP协议
-      IDE桥接
-      插件生态
-    记忆篇
-      四层记忆
-      压缩系统
-      实验功能
-    协作篇
-      多智能体
-      团队蜂群
-      编排引擎
-    隐藏篇
-      KAIROS
-      Feature Flag
-      彩蛋
-    哲学篇
-      设计模式
-      性能工程
-      恢复层真相
-      竞品与未来
-```
-
----
 
 ## 四条设计思想主线
 
-!!! tip "主线一：不是聊天壳"
-    Claude Code 不是套了个壳的 ChatGPT——它是一个**会调用工具的任务执行器**
-
-!!! tip "主线二：铁三角"
-    核心架构 = **上下文装配** + **Agent Loop** + **工具编排**
-
-!!! tip "主线三：最难的不是生成"
-    真正的工程挑战在于**权限、安全、压缩、恢复、一致性**
-
-!!! tip "主线四：两套代码库"
-    "能跑起来"不等于"官方原始设计"——严格区分**还原层**与**补全层**
-
----
-
-## 全书结构一览
-
-| 编 | 主题 | 章节 | 生活类比 |
-|---|------|------|----------|
-| 第一编 | [欢迎来到源码的世界](part1/index.md) | 1-4 | 拆开收音机 |
-| 第二编 | [程序是怎么启动的](part2/index.md) | 5-8 | 汽车点火 |
-| 第三编 | [AI 是怎么思考的](part3/index.md) | 9-13 | 厨师做菜 |
-| 第四编 | [AI 的双手——工具系统](part4/index.md) | 14-19 | 电器插头标准 |
-| 第五编 | [安全防线](part5/index.md) | 20-24 | 机场安检 |
-| 第六编 | [连接世界](part6/index.md) | 25-28 | USB 接口 |
-| 第七编 | [记忆与遗忘](part7/index.md) | 29-32 | 人的记忆系统 |
-| 第八编 | [AI 团队](part8/index.md) | 33-35 | 蜜蜂分工 |
-| 第九编 | [冰山之下](part9/index.md) | 36-38 | 隐藏关卡 |
-| 第十编 | [站在巨人肩膀上](part10/index.md) | 39-42 | 武术心法 |
-
----
-
-## 三种读法
-
-=== "🌱 探索路径（初学者）"
-
-    **推荐章节**：1 → 4 → 5 → 8 → 9 → 11 → 14 → 16 → 20 → 29 → 33 → 36 → 39 → 42
-
-    每章只读**生活类比**和**核心问题**部分，跳过深水区。你会理解一个真实大型软件的设计思路。
-
-=== "🔧 实战路径（开发者）"
-
-    按编顺序通读，**选读深水区**。你会获得可复用的架构模式和 CLI 开发实战经验。
-
-=== "🏗️ 架构路径（架构师）"
-
-    先读**第3章**（证据边界）和**第41章**（恢复层真相），再按兴趣深入所有**深水区**。
+<div class="idea-grid">
+  <div class="idea-card">
+    <h3>不是聊天壳</h3>
+    <p>Claude Code 不是套了个壳的聊天应用，而是一个会调用工具的任务执行器。</p>
+  </div>
+  <div class="idea-card">
+    <h3>核心铁三角</h3>
+    <p>理解这套系统，关键是上下文装配、Agent Loop 和工具编排这三根主梁。</p>
+  </div>
+  <div class="idea-card">
+    <h3>最难的是约束</h3>
+    <p>真正的工程挑战不只是生成代码，而是权限、安全、压缩、恢复和一致性。</p>
+  </div>
+  <div class="idea-card">
+    <h3>必须分清两套代码库</h3>
+    <p>能跑起来不等于官方原始设计。阅读时要持续区分还原层和补全层。</p>
+  </div>
+</div>
