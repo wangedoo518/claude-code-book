@@ -1,10 +1,10 @@
 site_name: Claude Code 源码解析红宝书
 site_description: 基于 v2.1.88 双生逆向源码的设计思想深度解析
 site_author: Warwolf Team
-site_url: https://warwolf.github.io/warwolf.book/
+site_url: https://wangedoo518.github.io/claude-code-book/
 
-repo_name: warwolf/warwolf.book
-repo_url: https://github.com/warwolf/warwolf.book
+repo_name: wangedoo518/claude-code-book
+repo_url: https://github.com/wangedoo518/claude-code-book
 
 copyright: Copyright &copy; 2026 Warwolf Team — 仅用于技术研究与教育目的
 
@@ -93,7 +93,7 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/warwolf/warwolf.book
+      link: https://github.com/wangedoo518/claude-code-book
 
 nav:
   - 首页: index.md

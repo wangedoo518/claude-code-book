@@ -6,9 +6,9 @@ icon: material/brain
 
 <div class="part-intro" markdown>
 
-> *人的记忆有层次：正在想的、今天学的、一直记得的、大家共享的知识。AI 也是如此。*
+> *一个好助手，不只是“现在听得懂你”，还要“过几天还能接上你的上下文”。*
 >
-> 本编解析 Claude Code 的记忆架构：**四层记忆体系**、**CLAUDE.md 与记忆目录**、**压缩系统**、**实验性功能**。
+> Claude Code 的记忆系统不是一个大缓存，而是多层结构：**会话内上下文**、**项目级指令**、**持久化记忆目录**、**团队共享记忆**，再加上一整套压缩和实验机制来控制体积与新鲜度。
 
 </div>
 
@@ -20,22 +20,20 @@ icon: material/brain
 flowchart LR
     subgraph 第七编["🧠 记忆与遗忘"]
         direction TB
-        C29["第29章<br/>四层记忆<br/><i>从短期到长期</i>"]
-        C30["第30章<br/>记忆目录<br/><i>CLAUDE.md与笔记本</i>"]
-        C31["第31章<br/>压缩系统<br/><i>记忆装不下怎么办</i>"]
-        C32["第32章<br/>实验区<br/><i>概念车还是量产车</i>"]
+        C29["第29章<br/>四层记忆<br/><i>Claude Code 怎么记住你</i>"]
+        C30["第30章<br/>AI 的笔记本<br/><i>CLAUDE.md 与 MEMORY.md</i>"]
+        C31["第31章<br/>压缩系统<br/><i>上下文装不下怎么办</i>"]
+        C32["第32章<br/>实验区<br/><i>哪些功能还在试验</i>"]
     end
 
-    C29 -->|建立框架| C30
-    C30 -->|持久化| C31
-    C31 -->|瘦身优化| C32
-    C32 -->|"记忆完整 📝"| 后续编
+    C29 --> C30 --> C31 --> C32
+    C32 --> NEXT["第八编：AI 团队"]
 
-    style 第七编 fill:#1a1a2e,stroke:#7c4dff,color:#fff
-    style C29 fill:#16213e,stroke:#e94560,color:#fff
-    style C30 fill:#16213e,stroke:#0f3460,color:#fff
-    style C31 fill:#16213e,stroke:#533483,color:#fff
-    style C32 fill:#16213e,stroke:#e94560,color:#fff
+    style 第七编 fill:#18324b,stroke:#64b5f6,color:#fff
+    style C29 fill:#23415d,stroke:#ffd54f,color:#fff
+    style C30 fill:#23415d,stroke:#4db6ac,color:#fff
+    style C31 fill:#23415d,stroke:#ff8a65,color:#fff
+    style C32 fill:#23415d,stroke:#ba68c8,color:#fff
 ```
 
 ---
@@ -43,37 +41,28 @@ flowchart LR
 ## 本编四章速览
 
 | 章 | 标题 | 核心问题 | 生活类比 |
-|---|------|----------|----------|
-| 29 | [四层记忆](chapter29.md) | 关掉终端再打开，AI 还记得你是谁吗？ | 人的四层记忆系统 |
-| 30 | [记忆目录](chapter30.md) | CLAUDE.md、MEMORY.md、DreamTask 各管什么？ | 学生的学习系统 |
-| 31 | [压缩系统](chapter31.md) | 对话快超限了——怎么"瘦身"又不丢重要信息？ | 行李箱塞满了 |
-| 32 | [实验区](chapter32.md) | contextCollapse 和 snip 是成熟功能还是实验品？ | 车展上的概念车 |
+|---|---|---|---|
+| 29 | [四层记忆](chapter29.md) | 关掉终端之后，Claude Code 还记得什么？ | 人的记忆分层 |
+| 30 | [AI 的笔记本](chapter30.md) | CLAUDE.md、MEMORY.md、DreamTask 各自负责什么？ | 教科书、笔记本、错题集 |
+| 31 | [压缩系统](chapter31.md) | 上下文快满了，怎么瘦身又不丢重点？ | 塞满的行李箱 |
+| 32 | [实验区](chapter32.md) | 哪些代码已经上线，哪些还只是概念车？ | 车展上的概念车 |
 
 ---
 
-## 设计思想主线
+## 你会在这一编看到什么
 
-!!! tip "本编建立的认知基础"
-    1. 四层记忆（会话缓冲→短期→长期→团队共识）各解决不同的**"遗忘问题"**
-    2. CLAUDE.md 是"教科书"，MEMORY.md 是"笔记本"——**每种"笔记"有不同用途**
-    3. 压缩系统有三种策略：手动/定时/紧急——**在保留核心信息的前提下缩减上下文**
-    4. 区分实验性代码和正式功能是**高效读源码的必备技能**
+```mermaid
+flowchart TD
+    A["用户与项目信息"] --> B["CLAUDE.md / 规则文件"]
+    A --> C["Auto Memory / Team Memory"]
+    B --> D["QueryEngine 注入上下文"]
+    C --> D
+    D --> E["上下文增长"]
+    E --> F["Compact / Snip / Context Collapse"]
 
----
+    style D fill:#e3f2fd,stroke:#1e88e5,color:#000
+    style F fill:#ede7f6,stroke:#7e57c2,color:#000
+```
 
-## 推荐路径
-
-=== "🌱 初学者"
-
-    第29章的四层记忆概念最重要——**理解 AI 的记忆和人的记忆有多像**。
-
-=== "🔧 开发者"
-
-    第30章的 CLAUDE.md 机制和第31章的压缩策略是**构建 AI 应用记忆系统的实战参考**。
-
-=== "🏗️ 架构师"
-
-    第32章的实验区分析帮你**分辨源码中的正式功能和实验性代码**——避免在沙上建塔。
-
-!!! note "即将上线"
-    本编内容正在写作中，敬请期待。
+!!! success "本编阅读目标"
+    读完这一编，你会明白 Claude Code 的“记忆”不是魔法，而是一套文件化、可注入、可压缩、可同步、也会过期的工程系统。
