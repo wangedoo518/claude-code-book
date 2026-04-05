@@ -38,6 +38,11 @@
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
 }
 
+/* --- 参考 ccbook：桌面端以左侧目录为主，不显示顶部 tabs --- */
+.md-tabs {
+  display: none;
+}
+
 /* --- Mermaid 图表优化 --- */
 .mermaid {
   margin: 1.5em 0;
@@ -178,13 +183,14 @@
 .cover-page,
 .community-page {
   position: relative;
-  margin: 0 calc(50% - 50vw);
-  padding: clamp(4rem, 9vw, 7rem) 1.25rem;
+  margin: 1.4rem 0 1.8rem;
+  padding: clamp(1.8rem, 4vw, 3rem);
   overflow: hidden;
+  border: 1px solid var(--warwolf-line);
+  border-radius: 32px;
 }
 
 .cover-page {
-  min-height: calc(100vh - 3.2rem);
   background:
     radial-gradient(circle at 18% 18%, rgba(203, 54, 49, 0.48), transparent 34%),
     radial-gradient(circle at 84% 22%, rgba(255, 176, 107, 0.18), transparent 28%),
@@ -204,7 +210,7 @@
 .community-shell {
   position: relative;
   z-index: 1;
-  max-width: 1180px;
+  max-width: 100%;
   margin: 0 auto;
   display: grid;
   gap: clamp(2rem, 4vw, 4rem);
@@ -382,6 +388,12 @@
   font-size: 0.84rem;
 }
 
+.cover-reading-note {
+  margin-top: 0.75rem;
+  color: rgba(248, 241, 232, 0.84);
+  font-size: 0.92rem;
+}
+
 .community-points {
   display: grid;
   gap: 1rem;
@@ -493,10 +505,6 @@
   .cover-shell,
   .community-shell {
     grid-template-columns: 1fr;
-  }
-
-  .cover-page {
-    min-height: auto;
   }
 
   .cover-art-panel {

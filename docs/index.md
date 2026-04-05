@@ -1,6 +1,5 @@
 ---
 hide:
-  - navigation
   - toc
 ---
 
@@ -42,6 +41,7 @@ hide:
       </div>
 
       <p class="cover-note">PDF / EPUB 将在 GitHub Releases 页面持续更新，源码入口直达仓库主页。</p>
+      <p class="cover-reading-note">左侧目录负责全书导航，右侧内容区负责阅读与深入，尽量保持像一本书一样顺着读。</p>
     </div>
   </div>
 </section>
